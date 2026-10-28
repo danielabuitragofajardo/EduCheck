@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduCheck - Panel Principal</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="main">
+    <header class="topbar">
+        <div class="topbar-brand">
+            <div class="logo-circle">E</div>
+            <h1>EduCheck</h1>
+        </div>
+        <div class="topbar-right">
+            <div class="photo-circle">👤</div>
+            <div id="user-info" class="user-info"></div>
+            <button id="logout-btn" class="btn">Cerrar sesión</button>
+        </div>
+    </header>
+    <div class="content-wrapper">
+        <aside class="side-menu">
+            <button class="side-item" id="menu-admin-btn">
+                <span>Administrador</span>
+                <span class="arrow">▸</span>
+            </button>
+            <div class="side-submenu" id="side-admin">
+                <button class="side-link" onclick="EduCheck.goAdminPanel()">Vista administrador</button>
+                <button class="side-link" onclick="EduCheck.goToLogin()">Iniciar sesión</button>
+                <button class="side-link" onclick="EduCheck.goAdminUsers()">Gestión de usuarios</button>
+                <button class="side-link" onclick="EduCheck.goAdminReports()">Reportes</button>
+            </div>
+            <button class="side-item" id="menu-vigilante-btn">
+                <span>Vigilante</span>
+                <span class="arrow">▸</span>
+            </button>
+            <div class="side-submenu" id="side-vigilante">
+                <button class="side-link" onclick="EduCheck.goVigilanteView()">Vista vigilante</button>
+                <button class="side-link" onclick="EduCheck.goVigilanteTab('visitas')">Registrar ingreso / salida</button>
+                <button class="side-link" onclick="EduCheck.goVigilanteTab('personas')">Registrar personas</button>
+                <button class="side-link" onclick="EduCheck.goVigilanteTab('equipos')">Equipos</button>
+                <button class="side-link" onclick="EduCheck.goVigilanteTab('visitantes')">Visitantes</button>
+                <button class="side-link" onclick="EduCheck.goAdminUsers()">Gestión de usuarios</button>
+            </div>
+        </aside>
+        <main class="main-panel">
+            <h2>Panel de información</h2>
+            <p class="subtitle">Accesos y movimientos en tiempo real</p>
+            <div class="cards">
+                <div class="card">
+                    <h3 id="card-total">0</h3>
+                    <p>Total accesos</p>
+                </div>
+                <div class="card">
+                    <h3 id="card-aprendices">0</h3>
+                    <p>Aprendices</p>
+                </div>
+                <div class="card">
+                    <h3 id="card-instructores">0</h3>
+                    <p>Instructores</p>
+                </div>
+                <div class="card">
+                    <h3 id="card-funcionarios">0</h3>
+                    <p>Funcionarios</p>
+                </div>
+                <div class="card">
+                    <h3 id="card-visitantes">0</h3>
+                    <p>Visitantes</p>
+                </div>
+            </div>
+            <section class="panel-section">
+                <h3>Movimientos recientes</h3>
+                <div class="filters">
+                    <input type="text" id="mov-hora" placeholder="Filtrar por hora">
+                    <input type="text" id="mov-usuario" placeholder="Filtrar por usuario">
+                    <select id="mov-tipo">
+                        <option value="">Tipo: Todos</option>
+                        <option value="INGRESO">Ingreso</option>
+                        <option value="SALIDA">Salida</option>
+                    </select>
+                    <select id="mov-estado">
+                        <option value="">Estado: Todos</option>
+                        <option value="ACTIVO">Activo</option>
+                        <option value="INACTIVO">Inactivo</option>
+                    </select>
+                    <button class="btn" onclick="EduCheck.applyMovementFilters()">Filtrar</button>
+                </div>
+                <div id="movements-table"></div>
+            </section>
+        </main>
+    </div>
+    <script src="/app.js"></script>
+    <script>
+        EduCheck.initMain();
+    </script>
+</body>
+</html>

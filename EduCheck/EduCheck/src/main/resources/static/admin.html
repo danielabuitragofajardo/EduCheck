@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduCheck - Panel Administrador</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="admin">
+    <header class="topbar">
+        <h1>EduCheck</h1>
+        <div id="user-info" class="user-info"></div>
+        <button id="logout-btn" class="btn">Cerrar sesión</button>
+    </header>
+    <nav class="tabs">
+        <button class="tab active" data-tab="users">Usuarios</button>
+        <button class="tab" data-tab="reports">Reportes</button>
+    </nav>
+    <main>
+        <section id="tab-users">
+            <h2>Gestión de usuarios</h2>
+            <form id="user-form" onsubmit="EduCheck.saveUser(event)">
+                <input type="hidden" id="user-id">
+                <label>Rol</label>
+                <select id="user-rol">
+                    <option value="ADMIN">Administrador</option>
+                    <option value="VIGILANTE">Vigilante</option>
+                    <option value="USUARIO">Usuario</option>
+                </select>
+                <label>Tipo de persona</label>
+                <select id="user-tipo">
+                    <option value="APRENDIZ">Aprendiz</option>
+                    <option value="INSTRUCTOR">Instructor</option>
+                    <option value="FUNCIONARIO">Funcionario</option>
+                </select>
+                <label>Tipo de documento</label>
+                <input type="text" id="user-tipo-doc" placeholder="CC / CE / PAS">
+                <label>Número de documento</label>
+                <input type="text" id="user-documento" placeholder="12345678">
+                <label>Nombre completo</label>
+                <input type="text" id="user-nombre" placeholder="Nombre completo">
+                <label>Estado</label>
+                <select id="user-estado">
+                    <option value="ACTIVO">Activo</option>
+                    <option value="INACTIVO">Inactivo</option>
+                </select>
+                <label>Contraseña</label>
+                <input type="password" id="user-password" placeholder="Contraseña">
+                <button type="submit" class="btn">Guardar usuario</button>
+            </form>
+            <div id="users-table"></div>
+        </section>
+        <section id="tab-reports" style="display:none;">
+            <h2>Reportes</h2>
+            <div>
+                <button id="report-users" class="btn">Consultar usuarios</button>
+                <button id="report-visits" class="btn">Consultar visitas</button>
+                <button id="report-movements" class="btn">Consultar movimientos</button>
+                <button id="report-access" class="btn">Consultar accesos</button>
+            </div>
+            <div id="reports-table"></div>
+        </section>
+    </main>
+    <script src="/app.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const tabs = document.querySelectorAll(".tab");
+            const sections = document.querySelectorAll("section");
+            tabs.forEach(function (tab) {
+                tab.addEventListener("click", function () {
+                    tabs.forEach(function (t) { t.classList.remove("active"); });
+                    sections.forEach(function (s) { s.style.display = "none"; });
+                    tab.classList.add("active");
+                    if (tab.getAttribute("data-tab") === "users") { document.getElementById("tab-users").style.display = "block"; }
+                    if (tab.getAttribute("data-tab") === "reports") { document.getElementById("tab-reports").style.display = "block"; }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

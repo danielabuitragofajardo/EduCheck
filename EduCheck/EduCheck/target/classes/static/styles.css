@@ -1,0 +1,332 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0;
+    background-color: #f4f6f8;
+    color: #222;
+}
+
+h1, h2, h3 {
+    color: #1f3a5f;
+}
+
+/* Login */
+.login-container {
+    max-width: 420px;
+    margin: 80px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    text-align: center;
+}
+
+.login-container h1 {
+    margin-bottom: 4px;
+}
+
+.login-container .subtitle {
+    color: #666;
+    font-size: 14px;
+}
+
+.login-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.login-container label {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.login-container input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.login-container button {
+    margin-top: 8px;
+    padding: 12px;
+    background: #1f3a5f;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.error {
+    color: #b00020;
+    margin-top: 12px;
+    font-size: 14px;
+}
+
+/* Panel */
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+    background: #1f3a5f;
+    color: #fff;
+}
+
+.topbar h1 {
+    color: #fff;
+    margin: 0;
+    font-size: 22px;
+}
+
+.topbar .user-info {
+    font-size: 14px;
+}
+
+.topbar .btn {
+    background: #fff;
+    color: #1f3a5f;
+}
+
+.tabs {
+    display: flex;
+    gap: 6px;
+    padding: 10px 24px;
+    background: #e3e9f0;
+}
+
+.tab {
+    padding: 10px 16px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #1f3a5f;
+}
+
+.tab.active {
+    background: #1f3a5f;
+    color: #fff;
+}
+
+main {
+    padding: 20px 24px;
+}
+
+section {
+    background: #fff;
+    padding: 18px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+h2 {
+    margin-top: 0;
+}
+
+/* Formularios */
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: flex-end;
+    margin-bottom: 16px;
+}
+
+form label {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    font-weight: bold;
+    color: #444;
+}
+
+form input, form select, form button {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+form button {
+    background: #1f3a5f;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+/* Tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    font-size: 13px;
+}
+
+th {
+    background: #eef2f6;
+}
+
+/* Botones */
+.btn {
+    background: #1f3a5f;
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-danger {
+    background: #b00020;
+}
+
+.btn + .btn {
+    margin-left: 6px;
+}
+
+/* Panel principal */
+.content-wrapper {
+    display: flex;
+    align-items: flex-start;
+}
+
+.side-menu {
+    width: 240px;
+    padding: 20px 12px;
+    background: #e3e9f0;
+    min-height: calc(100vh - 60px);
+}
+
+.side-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    border: none;
+    border-radius: 8px;
+    background: #fff;
+    color: #1f3a5f;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: left;
+}
+
+.side-submenu {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    margin: 0 0 10px 14px;
+}
+
+.side-submenu .side-link {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: #1f3a5f;
+    text-align: left;
+    cursor: pointer;
+}
+
+.side-submenu .side-link:hover {
+    background: #d5dee7;
+}
+
+.main-panel {
+    flex: 1;
+    padding: 20px 24px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin: 16px 0;
+}
+
+.card {
+    background: #fff;
+    padding: 16px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.card h3 {
+    margin: 0 0 6px;
+    font-size: 26px;
+    color: #1f3a5f;
+}
+
+.card p {
+    margin: 0;
+    color: #666;
+    font-size: 13px;
+}
+
+.panel-section {
+    background: #fff;
+    padding: 18px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+
+.filters input, .filters select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.topbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #fff;
+    color: #1f3a5f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.photo-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #ccd6df;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

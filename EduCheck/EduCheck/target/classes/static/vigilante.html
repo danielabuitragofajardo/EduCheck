@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduCheck - Panel Vigilante</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="vigilante">
+    <header class="topbar">
+        <h1>EduCheck</h1>
+        <div id="user-info" class="user-info"></div>
+        <button id="logout-btn" class="btn">Cerrar sesión</button>
+    </header>
+    <nav class="tabs">
+        <button class="tab active" data-tab="visitas">Visitas</button>
+        <button class="tab" data-tab="equipos">Equipos</button>
+        <button class="tab" data-tab="personas">Personas</button>
+        <button class="tab" data-tab="movimientos">Movimientos</button>
+        <button class="tab" data-tab="motivos">Motivos de visita</button>
+    </nav>
+    <main>
+        <section id="tab-visitas">
+            <h2>Registro de visitas</h2>
+            <form id="visit-form" onsubmit="EduCheck.saveVisit(event)">
+                <input type="text" id="visit-nombre" placeholder="Nombre completo" required>
+                <input type="text" id="visit-tipo-doc" placeholder="Tipo documento">
+                <input type="text" id="visit-documento" placeholder="Número documento">
+                <select id="visit-motivo"></select>
+                <button type="submit" class="btn">Registrar ingreso</button>
+            </form>
+            <div id="visits-table"></div>
+        </section>
+
+        <section id="tab-equipos" style="display:none;">
+            <h2>Control de equipos tecnológicos</h2>
+            <form id="equipment-form" onsubmit="EduCheck.saveEquipment(event)">
+                <input type="text" id="equipment-tipo" placeholder="Tipo (portátil, proyector, etc.)" required>
+                <input type="text" id="equipment-serial" placeholder="Serial">
+                <input type="text" id="equipment-marca" placeholder="Marca">
+                <select id="equipment-user-id"></select>
+                <button type="submit" class="btn">Registrar equipo</button>
+            </form>
+            <div>
+                <select id="assign-equipment-id"></select>
+                <select id="assign-user-id"></select>
+                <button id="assign-equipment-btn" class="btn" onclick="EduCheck.assignSelectedEquipment()">Asignar equipo a usuario</button>
+            </div>
+            <div id="equipment-table"></div>
+        </section>
+
+        <section id="tab-personas" style="display:none;">
+            <h2>Ingreso / salida de personas</h2>
+            <form id="access-form" onsubmit="EduCheck.saveAccess(event)">
+                <select id="access-user-id"></select>
+                <select id="access-tipo">
+                    <option value="INGRESO">Ingreso</option>
+                    <option value="SALIDA">Salida</option>
+                </select>
+                <input type="text" id="access-observacion" placeholder="Observación">
+                <button type="submit" class="btn">Registrar movimiento</button>
+            </form>
+            <div id="access-table"></div>
+        </section>
+
+        <section id="tab-movimientos" style="display:none;">
+            <h2>Historial de movimientos de equipos</h2>
+            <div>
+                <select id="movement-equipment-id"></select>
+                <button class="btn" onclick="EduCheck.showEquipmentMovements(document.getElementById('movement-equipment-id').value)">Consultar historial</button>
+            </div>
+            <div id="movements-equipment"></div>
+            <h3>Movimientos registrados</h3>
+            <div id="movements-all"></div>
+        </section>
+
+        <section id="tab-motivos" style="display:none;">
+            <h2>Motivos de visita</h2>
+            <form id="motivo-form" onsubmit="EduCheck.saveMotivo(event)">
+                <input type="text" id="motivo-nombre" placeholder="Motivo" required>
+                <input type="text" id="motivo-descripcion" placeholder="Descripción">
+                <button type="submit" class="btn">Guardar motivo</button>
+            </form>
+            <div id="motivos-table"></div>
+        </section>
+    </main>
+    <script src="/app.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const tabs = document.querySelectorAll(".tab");
+            const sections = document.querySelectorAll("main section");
+            tabs.forEach(function (tab) {
+                tab.addEventListener("click", function () {
+                    tabs.forEach(function (t) { t.classList.remove("active"); });
+                    sections.forEach(function (s) { s.style.display = "none"; });
+                    tab.classList.add("active");
+                    const target = document.getElementById("tab-" + tab.getAttribute("data-tab"));
+                    if (target) target.style.display = "block";
+                });
+            });
+        });
+    </script>
+</body>
+</html>

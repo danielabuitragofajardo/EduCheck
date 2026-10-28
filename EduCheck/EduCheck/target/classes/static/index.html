@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduCheck - Inicio de sesión</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body data-page="login">
+    <div class="login-container">
+        <h1>EduCheck</h1>
+        <p class="subtitle">Control de acceso y trazabilidad de equipos tecnológicos</p>
+        <form id="login-form">
+            <label for="login-user">Usuario / Documento</label>
+            <input type="text" id="login-user" placeholder="Ingrese usuario o documento" required>
+            <label for="login-password">Contraseña</label>
+            <input type="password" id="login-password" placeholder="Ingrese contraseña" required>
+            <button type="submit">Iniciar sesión</button>
+        </form>
+        <p id="login-error" class="error"></p>
+    </div>
+    <script src="/app.js"></script>
+    <script>
+        EduCheck.initLogin();
+    </script>
+</body>
+</html>
